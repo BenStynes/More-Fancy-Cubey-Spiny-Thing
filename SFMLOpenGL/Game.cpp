@@ -1,8 +1,10 @@
 #include <Game.h>
 
 bool updatable = false;
+vector3 yeet[8] = { {-1.0f,-1.0f,1.0f },{1.0f,-1.0f,1.0f }, {1.0f,1.0f,1.0f }, 
+{-1.0f,1.0f,1.0f }, {-1.0f,-1.0f,-1.0f }, {1.0f,-1.0f,-1.0f }, 
+{1.0f,1.0f,-1.0f }, {-1.0f,1.0f,-1.0f } };
 
-gpp::Vector3 v3;
 
 Game::Game() : window(VideoMode(800, 600), "OpenGL Cube")
 {
@@ -54,63 +56,63 @@ void Game::initialize()
 	{
 		//Front Face
 		glColor3f(0.0f, 0.0f, 1.0f);
-		glVertex3f(v3.getX(), 1.0f, -5.0f);
-		glVertex3f(-1.0f, 1.0f, -5.0f);
-		glVertex3f(-1.0f, -1.0f, -5.0f);
+		glVertex3f(yeet[0].getX(), yeet[0].getZ(), yeet[0].getZ());
+		glVertex3f(yeet[1].getX(), yeet[1].getZ(), yeet[1].getZ());
+		glVertex3f(yeet[2].getX(), yeet[2].getZ(), yeet[2].getZ());
 
-		glVertex3f(1.0f, -1.0f, -5.0f);
-		glVertex3f(-1.0f, -1.0f, -5.0f);
-		glVertex3f(1.0f, 1.0f, -5.0f);
+		glVertex3f(yeet[0].getX(), yeet[0].getZ(), yeet[0].getZ());
+		glVertex3f(yeet[1].getX(), yeet[1].getZ(), yeet[1].getZ());
+		glVertex3f(yeet[2].getX(), yeet[2].getZ(), yeet[2].getZ());
 
 		//Back Face
 		glColor3f(0.0f, 1.0f, 0.0f);
-		glVertex3f(v3.getX(), 1.0f, -15.0f);
-		glVertex3f(-1.0f, 1.0f, -15.0f);
-		glVertex3f(-1.0f, -1.0f, -15.0f);
+		glVertex3f(yeet[4].getX(), yeet[4].getZ(), yeet[4].getZ());
+		glVertex3f(yeet[7].getX(), yeet[7].getZ(), yeet[7].getZ());
+		glVertex3f(yeet[6].getX(), yeet[6].getZ(), yeet[6].getZ());
 
-		glVertex3f(1.0f, -1.0f, -15.0f);
-		glVertex3f(-1.0f, -1.0f, -15.0f);
-		glVertex3f(1.0f, 1.0f, -15.0f);
+		glVertex3f(yeet[6].getX(), yeet[6].getZ(), yeet[6].getZ());
+		glVertex3f(yeet[5].getX(), yeet[5].getZ(), yeet[5].getZ());
+		glVertex3f(yeet[4].getX(), yeet[4].getZ(), yeet[4].getZ());
 
 		//top
 		glColor3f(1.0f, 0.0f, 0.0f);
-		glVertex3f(-1.0f, 1.0f, -5.0f);
-		glVertex3f(-1.0f, 1.0f, -15.0f);
-		glVertex3f(1.0f, 1.0f, -15.0f);
+		glVertex3f(yeet[3].getX(), yeet[3].getZ(), yeet[3].getZ());
+		glVertex3f(yeet[2].getX(), yeet[2].getZ(), yeet[2].getZ());
+		glVertex3f(yeet[6].getX(), yeet[6].getZ(), yeet[6].getZ());
 
-		glVertex3f(1.0f, 1.0f, -15.0f);
-		glVertex3f(1.0f, 1.0f, -5.0f);
-		glVertex3f(-1.0f, 1.0f, -5.0f);
+		glVertex3f(yeet[6].getX(), yeet[6].getZ(), yeet[6].getZ());
+		glVertex3f(yeet[7].getX(), yeet[7].getZ(), yeet[7].getZ());
+		glVertex3f(yeet[3].getX(), yeet[3].getZ(), yeet[3].getZ());
 
 
 		//bottom
 		glColor3f(1.0f, 0.0f, 0.0f);
-		glVertex3f(1.0f, -1.0f, -15.0f);
-		glVertex3f(1.0f, -1.0f, -5.0f);
-		glVertex3f(-1.0f, -1.0f, -5.0f);
+		glVertex3f(yeet[4].getX(), yeet[4].getZ(), yeet[4].getZ());
+		glVertex3f(yeet[5].getX(), yeet[5].getZ(), yeet[5].getZ());
+		glVertex3f(yeet[1].getX(), yeet[1].getZ(), yeet[1].getZ());
 
-		glVertex3f(-1.0f, -1.0f, -5.0f);
-		glVertex3f(-1.0f, -1.0f, -15.0f);
-		glVertex3f(1.0f, -1.0f, -15.0f);
+		glVertex3f(yeet[1].getX(), yeet[1].getZ(), yeet[1].getZ());
+		glVertex3f(yeet[0].getX(), yeet[0].getZ(), yeet[0].getZ());
+		glVertex3f(yeet[4].getX(), yeet[4].getZ(), yeet[4].getZ());
 
 		//side1
 		glColor3f(1.0f, 1.0f, 1.0f);
-		glVertex3f(-1.0f, 1.0f, -15.0f);
-		glVertex3f(-1.0f, -1.0f, -5.0f);
-		glVertex3f(-1.0f, 1.0f, -5.0f);
+		glVertex3f(yeet[1].getX(), yeet[1].getZ(), yeet[1].getZ());
+		glVertex3f(yeet[5].getX(), yeet[5].getZ(), yeet[5].getZ());
+		glVertex3f(yeet[6].getX(), yeet[6].getZ(), yeet[6].getZ());
 
-		glVertex3f(-1.0f, -1.0f, -5.0f);
-		glVertex3f(-1.0f, 1.0f, -15.0f);
-		glVertex3f(-1.0f, -1.0f, -15.0f);
+		glVertex3f(yeet[6].getX(), yeet[6].getZ(), yeet[6].getZ());
+		glVertex3f(yeet[2].getX(), yeet[2].getZ(), yeet[2].getZ());
+		glVertex3f(yeet[1].getX(), yeet[1].getZ(), yeet[1].getZ());
 		//side2
 		glColor3f(1.0f, 1.0f, 1.0f);
-		glVertex3f(1.0f, 1.0f, -15.0f);
-		glVertex3f(1.0f, -1.0f, -5.0f);
-		glVertex3f(1.0f, 1.0f, -5.0f);
+		glVertex3f(yeet[0].getX(), yeet[0].getZ(), yeet[0].getZ());
+		glVertex3f(yeet[3].getX(), yeet[3].getZ(), yeet[3].getZ());
+		glVertex3f(yeet[7].getX(), yeet[7].getZ(), yeet[7].getZ());
 
-		glVertex3f(1.0f, -1.0f, -5.0f);
-		glVertex3f(1.0f, 1.0f, -15.0f);
-		glVertex3f(1.0f, -1.0f, -15.0f);
+		glVertex3f(yeet[7].getX(), yeet[7].getZ(), yeet[7].getZ());
+		glVertex3f(yeet[4].getX(), yeet[4].getZ(), yeet[4].getZ());
+		glVertex3f(yeet[0].getX(), yeet[0].getZ(), yeet[0].getZ());
 		//Complete the faces of the Cube
 	}
 	glEnd();
@@ -135,12 +137,12 @@ void Game::update()
 
 	if (updatable)
 	{
-		rotationAngle += 0.005f;
+		/*rotationAngle += 0.005f;
 
 		if (rotationAngle > 360.0f)
 		{
 			rotationAngle -= 360.0f;
-		}
+		}*/
 	}
 	
 	cout << "Update up" << endl;
@@ -155,7 +157,7 @@ void Game::draw()
 	cout << "Drawing Cube " << endl;
 	glLoadIdentity();
 	glRotatef(rotationAngle, 0, 0, 1); // Rotates the camera on Y Axis
-
+	glTranslatef(0, 0, -8);
 	glCallList(1);
 
 	window.display();

@@ -4,12 +4,12 @@
 #include <gl/GL.h>
 #include <gl/GLU.h>
 
-#include <Vector3.h>
+#include <vector3.h>
 
 
 using namespace std;
 using namespace sf;
-using namespace gpp;
+
 
 class Game
 {
