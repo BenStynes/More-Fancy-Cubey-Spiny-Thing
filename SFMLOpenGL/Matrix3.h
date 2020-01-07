@@ -35,7 +35,7 @@ public:
 
 			 Matrix3 operator-(Matrix3 M2);
 
-			 Matrix3 RotationX(int _angle);
+			static Matrix3 RotationX(int _angle);
 
 			 Matrix3 RotationY(int _angle);
 

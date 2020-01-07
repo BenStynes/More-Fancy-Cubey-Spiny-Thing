@@ -5,10 +5,9 @@
 #include <gl/GLU.h>
 
 #include <vector3.h>
+#include "Matrix3.h"
 
 
-using namespace std;
-using namespace sf;
 
 
 class Game
@@ -18,16 +17,16 @@ public:
 	~Game();
 	void run();
 private:
-	Window window;
+	sf::Window window;
 	bool isRunning = false;
 	void initialize();
 	void update();
 	void draw();
 	void unload();
-
+	void setUp();
 	GLuint index;
-	Clock clock;
-	Time elapsed;
+	sf::Clock clock;
+	sf::Time elapsed;
 
 	float rotationAngle = 0.0f;
 };
