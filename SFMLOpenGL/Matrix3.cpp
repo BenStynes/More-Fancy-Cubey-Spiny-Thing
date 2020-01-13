@@ -190,17 +190,17 @@ Matrix3 Matrix3::Rotation(int _angle)
 }
 
 
-Matrix3 Matrix3::Translate(int dx, int dy)
+Matrix3 Matrix3::Translate(double dx, double dy)
 {
 	Matrix3 answer = Matrix3();
 	answer.A11 = 1;
 	answer.A12 = 0;
-	answer.A13 = 0;
+	answer.A13 = dx;
 	answer.A21 = 0;
 	answer.A22 = 1;
-	answer.A23 = 0;
-	answer.A31 = dx;
-	answer.A32 = dy;
+	answer.A23 = dy;
+	answer.A31 = 0;
+	answer.A32 = 0;
 	answer.A33 = 1;
 
 	return answer;

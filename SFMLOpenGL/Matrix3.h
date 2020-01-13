@@ -59,7 +59,7 @@ public:
 
 			 Matrix3 Rotation(int _angle);
 
-			 Matrix3 Translate(int dx, int dy);
+			 Matrix3 Translate(double dx, double dy);
 
 			 Matrix3 Scale(int dx, int dy);
 			 Matrix3 operator-();

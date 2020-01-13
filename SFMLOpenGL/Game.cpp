@@ -1,10 +1,10 @@
 #include <Game.h>
 
 bool updatable = false;
-vector3 yeet[8] = { {-1.0f,-1.0f,1.0f },{1.0f,-1.0f,1.0f }, {1.0f,1.0f,1.0f }, 
+vector3 vectorsPos[8] = { {-1.0f,-1.0f,1.0f },{1.0f,-1.0f,1.0f }, {1.0f,1.0f,1.0f }, 
 {-1.0f,1.0f,1.0f }, {-1.0f,-1.0f,-1.0f }, {1.0f,-1.0f,-1.0f }, 
 {1.0f,1.0f,-1.0f }, {-1.0f,1.0f,-1.0f } };
-Matrix3 reee;
+Matrix3 matrix;
 
 Game::Game() : window(sf::VideoMode(800, 600), "OpenGL Cube")
 {
@@ -68,10 +68,10 @@ void Game::update()
 		{
 			for (int i = 0; i < 8; i++)
 			{
-				vector3 dik = reee.RotationX(rotationAngle) * yeet[i];
-				yeet[i].setX(dik.getX());
-				yeet[i].setY(dik.getY());
-				yeet[i].setZ(dik.getZ());
+				vector3 localvect = matrix.RotationX(rotationAngle) * vectorsPos[i];
+				vectorsPos[i].setX(localvect.getX());
+				vectorsPos[i].setY(localvect.getY());
+				vectorsPos[i].setZ(localvect.getZ());
 
 			}
 		}
@@ -79,10 +79,10 @@ void Game::update()
 		{
 			for (int i = 0; i < 8; i++)
 			{
-				vector3 dik = reee.RotationY(rotationAngle) * yeet[i];
-				yeet[i].setX(dik.getX());
-				yeet[i].setY(dik.getY());
-				yeet[i].setZ(dik.getZ());
+				vector3 localvect = matrix.RotationY(rotationAngle) * vectorsPos[i];
+				vectorsPos[i].setX(localvect.getX());
+				vectorsPos[i].setY(localvect.getY());
+				vectorsPos[i].setZ(localvect.getZ());
 
 			}
 		}
@@ -90,32 +90,62 @@ void Game::update()
 		{
 			for (int i = 0; i < 8; i++)
 			{
-				vector3 dik = reee.RotationZ(rotationAngle) * yeet[i];
-				yeet[i].setX(dik.getX());
-				yeet[i].setY(dik.getY());
-				yeet[i].setZ(dik.getZ());
+				vector3 localvect = matrix.RotationZ(rotationAngle) * vectorsPos[i];
+				vectorsPos[i].setX(localvect.getX());
+				vectorsPos[i].setY(localvect.getY());
+				vectorsPos[i].setZ(localvect.getZ());
 
 			}
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num4))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 		{
 			for (int i = 0; i < 8; i++)
 			{
-				vector3 dik = reee.Translate(5, 0) * yeet[i];
-				yeet[i].setX(dik.getX());
-				yeet[i].setY(dik.getY());
-				yeet[i].setZ(dik.getZ());
+				float localZ = vectorsPos[i].getZ();
+				vectorsPos[i].setZ(1);
+				vector3 localvect = matrix.Translate(0, -0.5) * vectorsPos[i];
+				vectorsPos[i].setX(localvect.getX());
+				vectorsPos[i].setY(localvect.getY());
+				vectorsPos[i].setZ(localZ);
 
 			}
 		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Num5))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 		{
 			for (int i = 0; i < 8; i++)
 			{
-				vector3 dik = reee.Translate(0, 5) * yeet[i];
-				yeet[i].setX(dik.getX());
-				yeet[i].setY(dik.getY());
-				yeet[i].setZ(dik.getZ());
+				float localZ = vectorsPos[i].getZ();
+				vectorsPos[i].setZ(1);
+				vector3 localvect = matrix.Translate(0, 0.5) * vectorsPos[i];
+				vectorsPos[i].setX(localvect.getX());
+				vectorsPos[i].setY(localvect.getY());
+				vectorsPos[i].setZ(localZ);
+
+			}
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		{
+			for (int i = 0; i < 8; i++)
+			{
+				float localZ = vectorsPos[i].getZ();
+				vectorsPos[i].setZ(1);
+				vector3 localvect = matrix.Translate(0.5, 0) * vectorsPos[i];
+				vectorsPos[i].setX(localvect.getX());
+				vectorsPos[i].setY(localvect.getY());
+				vectorsPos[i].setZ(localZ);
+
+			}
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		{
+			for (int i = 0; i < 8; i++)
+			{
+				float localZ = vectorsPos[i].getZ();
+				vectorsPos[i].setZ(1);
+				vector3 localvect = matrix.Translate(-0.5, 0) * vectorsPos[i];
+				vectorsPos[i].setX(localvect.getX());
+				vectorsPos[i].setY(localvect.getY());
+				vectorsPos[i].setZ(localZ);
 
 			}
 		}
@@ -123,10 +153,11 @@ void Game::update()
 		{
 			for (int i = 0; i < 8; i++)
 			{
-				vector3 dik = reee.Scale3D(101) * yeet[i];
-				yeet[i].setX(dik.getX());
-				yeet[i].setY(dik.getY());
-				yeet[i].setZ(dik.getZ());
+
+				vector3 localvect = matrix.Scale3D(101) * vectorsPos[i];
+				vectorsPos[i].setX(localvect.getX());
+				vectorsPos[i].setY(localvect.getY());
+				vectorsPos[i].setZ(localvect.getZ());
 
 			}
 		}
@@ -134,10 +165,10 @@ void Game::update()
 		{
 			for (int i = 0; i < 8; i++)
 			{
-				vector3 dik = reee.Scale3D(99) * yeet[i];
-				yeet[i].setX(dik.getX());
-				yeet[i].setY(dik.getY());
-				yeet[i].setZ(dik.getZ());
+				vector3 localvect = matrix.Scale3D(99) * vectorsPos[i];
+				vectorsPos[i].setX(localvect.getX());
+				vectorsPos[i].setY(localvect.getY());
+				vectorsPos[i].setZ(localvect.getZ());
 
 			}
 		}
@@ -175,63 +206,63 @@ void Game::setUp()
 	{
 		//Front Face
 		glColor3f(0.0f, 0.0f, 1.0f);
-		glVertex3f(yeet[0].getX(), yeet[0].getY(), yeet[0].getZ());
-		glVertex3f(yeet[1].getX(), yeet[1].getY(), yeet[1].getZ());
-		glVertex3f(yeet[2].getX(), yeet[2].getY(), yeet[2].getZ());
+		glVertex3f(vectorsPos[0].getX(), vectorsPos[0].getY(), vectorsPos[0].getZ());
+		glVertex3f(vectorsPos[1].getX(), vectorsPos[1].getY(), vectorsPos[1].getZ());
+		glVertex3f(vectorsPos[2].getX(), vectorsPos[2].getY(), vectorsPos[2].getZ());
 
-		glVertex3f(yeet[2].getX(), yeet[2].getY(), yeet[2].getZ());
-		glVertex3f(yeet[3].getX(), yeet[3].getY(), yeet[3].getZ());
-		glVertex3f(yeet[0].getX(), yeet[0].getY(), yeet[0].getZ());
+		glVertex3f(vectorsPos[2].getX(), vectorsPos[2].getY(), vectorsPos[2].getZ());
+		glVertex3f(vectorsPos[3].getX(), vectorsPos[3].getY(), vectorsPos[3].getZ());
+		glVertex3f(vectorsPos[0].getX(), vectorsPos[0].getY(), vectorsPos[0].getZ());
 
 		//Back Face
 		glColor3f(0.0f, 1.0f, 0.0f);
-		glVertex3f(yeet[4].getX(), yeet[4].getY(), yeet[4].getZ());
-		glVertex3f(yeet[7].getX(), yeet[7].getY(), yeet[7].getZ());
-		glVertex3f(yeet[6].getX(), yeet[6].getY(), yeet[6].getZ());
+		glVertex3f(vectorsPos[4].getX(), vectorsPos[4].getY(), vectorsPos[4].getZ());
+		glVertex3f(vectorsPos[7].getX(), vectorsPos[7].getY(), vectorsPos[7].getZ());
+		glVertex3f(vectorsPos[6].getX(), vectorsPos[6].getY(), vectorsPos[6].getZ());
 
-		glVertex3f(yeet[6].getX(), yeet[6].getY(), yeet[6].getZ());
-		glVertex3f(yeet[5].getX(), yeet[5].getY(), yeet[5].getZ());
-		glVertex3f(yeet[4].getX(), yeet[4].getY(), yeet[4].getZ());
+		glVertex3f(vectorsPos[6].getX(), vectorsPos[6].getY(), vectorsPos[6].getZ());
+		glVertex3f(vectorsPos[5].getX(), vectorsPos[5].getY(), vectorsPos[5].getZ());
+		glVertex3f(vectorsPos[4].getX(), vectorsPos[4].getY(), vectorsPos[4].getZ());
 
 		//top
 		glColor3f(1.0f, 0.0f, 0.0f);
-		glVertex3f(yeet[3].getX(), yeet[3].getY(), yeet[3].getZ());
-		glVertex3f(yeet[2].getX(), yeet[2].getY(), yeet[2].getZ());
-		glVertex3f(yeet[6].getX(), yeet[6].getY(), yeet[6].getZ());
+		glVertex3f(vectorsPos[3].getX(), vectorsPos[3].getY(), vectorsPos[3].getZ());
+		glVertex3f(vectorsPos[2].getX(), vectorsPos[2].getY(), vectorsPos[2].getZ());
+		glVertex3f(vectorsPos[6].getX(), vectorsPos[6].getY(), vectorsPos[6].getZ());
 
-		glVertex3f(yeet[6].getX(), yeet[6].getY(), yeet[6].getZ());
-		glVertex3f(yeet[7].getX(), yeet[7].getY(), yeet[7].getZ());
-		glVertex3f(yeet[3].getX(), yeet[3].getY(), yeet[3].getZ());
+		glVertex3f(vectorsPos[6].getX(), vectorsPos[6].getY(), vectorsPos[6].getZ());
+		glVertex3f(vectorsPos[7].getX(), vectorsPos[7].getY(), vectorsPos[7].getZ());
+		glVertex3f(vectorsPos[3].getX(), vectorsPos[3].getY(), vectorsPos[3].getZ());
 
 
 		//bottom
 		glColor3f(1.0f, 0.0f, 0.0f);
-		glVertex3f(yeet[4].getX(), yeet[4].getY(), yeet[4].getZ());
-		glVertex3f(yeet[5].getX(), yeet[5].getY(), yeet[5].getZ());
-		glVertex3f(yeet[1].getX(), yeet[1].getY(), yeet[1].getZ());
+		glVertex3f(vectorsPos[4].getX(), vectorsPos[4].getY(), vectorsPos[4].getZ());
+		glVertex3f(vectorsPos[5].getX(), vectorsPos[5].getY(), vectorsPos[5].getZ());
+		glVertex3f(vectorsPos[1].getX(), vectorsPos[1].getY(), vectorsPos[1].getZ());
 
-		glVertex3f(yeet[1].getX(), yeet[1].getY(), yeet[1].getZ());
-		glVertex3f(yeet[0].getX(), yeet[0].getY(), yeet[0].getZ());
-		glVertex3f(yeet[4].getX(), yeet[4].getY(), yeet[4].getZ());
+		glVertex3f(vectorsPos[1].getX(), vectorsPos[1].getY(), vectorsPos[1].getZ());
+		glVertex3f(vectorsPos[0].getX(), vectorsPos[0].getY(), vectorsPos[0].getZ());
+		glVertex3f(vectorsPos[4].getX(), vectorsPos[4].getY(), vectorsPos[4].getZ());
 
 		//side1
 		glColor3f(1.0f, 0.0f, 1.0f);
-		glVertex3f(yeet[1].getX(), yeet[1].getY(), yeet[1].getZ());
-		glVertex3f(yeet[5].getX(), yeet[5].getY(), yeet[5].getZ());
-		glVertex3f(yeet[6].getX(), yeet[6].getY(), yeet[6].getZ());
+		glVertex3f(vectorsPos[1].getX(), vectorsPos[1].getY(), vectorsPos[1].getZ());
+		glVertex3f(vectorsPos[5].getX(), vectorsPos[5].getY(), vectorsPos[5].getZ());
+		glVertex3f(vectorsPos[6].getX(), vectorsPos[6].getY(), vectorsPos[6].getZ());
 
-		glVertex3f(yeet[6].getX(), yeet[6].getY(), yeet[6].getZ());
-		glVertex3f(yeet[2].getX(), yeet[2].getY(), yeet[2].getZ());
-		glVertex3f(yeet[1].getX(), yeet[1].getY(), yeet[1].getZ());
+		glVertex3f(vectorsPos[6].getX(), vectorsPos[6].getY(), vectorsPos[6].getZ());
+		glVertex3f(vectorsPos[2].getX(), vectorsPos[2].getY(), vectorsPos[2].getZ());
+		glVertex3f(vectorsPos[1].getX(), vectorsPos[1].getY(), vectorsPos[1].getZ());
 		//side2
 		glColor3f(0.0f, 1.0f, 1.0f);
-		glVertex3f(yeet[0].getX(), yeet[0].getY(), yeet[0].getZ());
-		glVertex3f(yeet[3].getX(), yeet[3].getY(), yeet[3].getZ());
-		glVertex3f(yeet[7].getX(), yeet[7].getY(), yeet[7].getZ());
+		glVertex3f(vectorsPos[0].getX(), vectorsPos[0].getY(), vectorsPos[0].getZ());
+		glVertex3f(vectorsPos[3].getX(), vectorsPos[3].getY(), vectorsPos[3].getZ());
+		glVertex3f(vectorsPos[7].getX(), vectorsPos[7].getY(), vectorsPos[7].getZ());
 
-		glVertex3f(yeet[7].getX(), yeet[7].getY(), yeet[7].getZ());
-		glVertex3f(yeet[4].getX(), yeet[4].getY(), yeet[4].getZ());
-		glVertex3f(yeet[0].getX(), yeet[0].getY(), yeet[0].getZ());
+		glVertex3f(vectorsPos[7].getX(), vectorsPos[7].getY(), vectorsPos[7].getZ());
+		glVertex3f(vectorsPos[4].getX(), vectorsPos[4].getY(), vectorsPos[4].getZ());
+		glVertex3f(vectorsPos[0].getX(), vectorsPos[0].getY(), vectorsPos[0].getZ());
 		//Complete the faces of the Cube
 	}
 	glEnd();
